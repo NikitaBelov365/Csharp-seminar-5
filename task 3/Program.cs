@@ -31,7 +31,7 @@ void ArrayFill(int[] array)
 void ArrayPrint(int[] array)
 {
     System.Console.Write(array[0]);
-    for (int i = 1; i < array.Length - 1; i++)
+    for (int i = 1; i < array.Length; i++)
     {
         System.Console.Write($", " + array[i]);
     }

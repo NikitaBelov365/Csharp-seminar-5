@@ -1,5 +1,6 @@
-﻿// Задача 1: Напишите программу замены элементов массива: 
-// положительные элементы замените на соответствующие отрицательные, и наоборот.
+﻿// Задача 3: Задайте одномерный массив из 10 случайных чисел 
+// в диапазоне от 1 до 200. Найдите количество  двузначных элементов массива. 
+
 
 int InputArraySize(string msg)
 {
@@ -23,7 +24,7 @@ void ArrayFill(int[] array)
     Random rnd = new Random();
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = rnd.Next(-9, 9);
+        array[i] = rnd.Next(0, 200);
     }
 }
 
@@ -37,16 +38,21 @@ void ArrayPrint(int[] array)
     System.Console.WriteLine();
 }
 
-void ArrayChange(int[] array)
+int AmmountOFTwoDigitElementsOfArray(int[] array)
 {
-    for (int i = 0; i < array.Length - 1; i++)
+    int ammount=0;
+    for (int i = 0; i < array.Length; i++)
     {
-        array[i] = -array[i];
+        if(array[i]>9 && array[i]<100)
+        {
+            ammount ++;
+        }
     }
+    return ammount;
+
 }
 
 int []array = ArrayCreation(InputArraySize("Input array size"));
 ArrayFill(array);
 ArrayPrint(array);
-ArrayChange(array);
-ArrayPrint(array);
+System.Console.WriteLine($"There is {AmmountOFTwoDigitElementsOfArray(array)} two digit elements in this array");
