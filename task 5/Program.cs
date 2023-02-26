@@ -41,8 +41,8 @@ void ArrayPrint(int[] array)
 
 int[] RefilledArray(int []array)
 {
-    int[] newArray = new int[array.Length/2];
-    for (int i = 0; i < (array.Length/2); i++)
+    int[] newArray = new int[array.Length/2+array.Length%2];
+    for (int i = 0; i < (array.Length/2+array.Length%2); i++)
     {
         newArray[i] = array[i]*array[array.Length-i-1];
     }

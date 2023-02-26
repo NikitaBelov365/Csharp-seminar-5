@@ -49,28 +49,28 @@ int InputInt(string msg)
     return 0;
 }
 
-void ArrayCheck(int[] array, int number)
+bool ArrayCheck(int[] array, int number)
 {
-    int status = 0;
     for (int i = 0; i < array.Length; i++)
     {
         if(array[i] == number)
         {
-            status = 1;
+            return true;
         }
+        
     }
-    if(status == 1)
-    {
-        System.Console.WriteLine($"There is {number} in this array");
-    }
-    else
-    {
-        System.Console.WriteLine($"There is no {number} in this array");
-    }
+    return false;
 }
 
 int []array = ArrayCreation(InputArraySize("Input array size"));
 ArrayFill(array);
 ArrayPrint(array);
 int number = InputInt("Input some number from -9 to 9");
-ArrayCheck(array, number);
+if(ArrayCheck(array, number))
+{
+    System.Console.WriteLine($"{number} is in this array");
+}
+else
+{
+    System.Console.WriteLine($"{number} is not in this array");
+}

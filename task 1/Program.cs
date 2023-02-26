@@ -4,7 +4,7 @@
 int InputArraySize(string msg)
 {
     System.Console.WriteLine(msg);
-    if(int.TryParse(Console.ReadLine(), out int value))
+    if (int.TryParse(Console.ReadLine(), out int value))
     {
         return value;
     }
@@ -37,27 +37,19 @@ void ArrayPrint(int[] array)
     System.Console.WriteLine();
 }
 
-int PositiveSum(int[] array)
+int SumSign(int[] array, bool isPositive = true)
 {
-    int sum = 0;
-    for (int i = 0; i < array.Length - 1; i++)
+    int sign = 1;
+    if (!isPositive)
     {
-        if(array[i]>0)
+        sign = -1;
+    }
+    int sum = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] * sign > 0)
         {
             sum += array[i];
-        }
-    }
-    return sum;
-}
-
-int NegativeSum(int[] array)
-{
-    int sum = 0;
-    for (int i = 0; i < array.Length - 1; i++)
-    {        
-        if(array[i]<0)
-        {
-            sum -= array[i];
         }
     }
     return sum;
@@ -67,4 +59,4 @@ int input = InputArraySize("Input array size:");
 int[] array = ArrayCreation(input);
 ArrayFill(array);
 ArrayPrint(array);
-System.Console.WriteLine($"Positive sum = {PositiveSum(array)}, negative sum = {NegativeSum(array)}");
+System.Console.WriteLine($"Positive sum = {SumSign(array)}, negative sum = {SumSign(array, false)}");
